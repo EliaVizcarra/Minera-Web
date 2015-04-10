@@ -1,0 +1,11 @@
+#--------------------------------------
+# change the `host` property to a
+# unique hostname on the domain you
+# are deploying to.
+#--------------------------------------
+
+applications:
+- name:    minera-prueba
+  host:    minera-prueba-gpc
+  memory:  128M
+  command: node app.js

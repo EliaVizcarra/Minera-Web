@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Minera del Perú">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Sign Up</title>
+  <!-- Bootstrap -->
+  <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/statics/css/estilos.css">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  
+<!-- NavBar -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">S.M.Z Contratistas</a>
+          </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="Nosotros">Nosotros</a></li>
+          <li><a href="Proyectos">Proyectos</a></li>
+          <li><a href="Operaciones">Operaciones</a></li>
+          <li><a href="ResponsabilidadSocial">Responsabilidad Social</a></li>
+          <li><a href="OportunidadLaboral">Oportunidad Laboral</a></li>
+          <li><a href="#contacto" data-toggle="modal">Contacto</a></li>
+          <li><button type="button" class="btn btn-success navbar-btn"><a href="SignUp" class="Btn-Loggin">Login</a></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!-- EnNavBar-->
+
+<!-- TopImage-Attachment -->
+
+  <div class="container-fluid top-container">
+    <div class="row">
+      <div class="col-md-12 top-image">
+        <div class="text-center">
+          <h1>INTRANET</h1>
+          <p>Sistema de Manejo interno de Archivos y comunicacion con el Personal </p>
+          <a href="" class="btn btn-primary">Ver Mas.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- EndTopImage-Attachment -->
+
+
+<!--PrimerContainer -->
+
+  <div class="container">
+
+        <div id="Chat" style='display:none;'>
+
+          <div class="col-md-4">
+
+            <h2>Usuarios Conectados:</h2>
+            <a id="btn-login" href="#">Login</a>
+            <ul id="online-userslist"></ul>
+          </div>
+
+          <div class="col-md-8">
+
+            <h3>Mensajes:</h3>
+            <ul id="list-msgs">
+              
+            </ul>
+
+            <textarea id="new-msg" cols="30" rows="5" placeholder="New message"></textarea>
+
+          </div>
+        </div>
+
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+
+                <div class="panel-heading">
+                    <div class="panel-title">Iniciar Sesion</div>
+                </div>     
+
+                <div style="padding-top:30px" class="panel-body" >
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        
+                    <form id="loginform" class="form-horizontal" role="form">
+                                
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Nombre de Usuario">                                        
+                        </div>
+                            
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="login-password" type="password" class="form-control" name="password" placeholder="Contraseña">
+                        </div>
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+                            <div class="col-sm-12 controls">
+                              <button id="btn-login" onclick="loggin()" type="button" class="btn btn-success">Login</button>
+                            </div>
+
+                        </div>
+
+                        <div id="alerts"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                    No tienes cuenta! 
+                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    Crea una aqui.
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>     
+                </div> 
+
+            </div>  
+        </div>
+
+        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    <div class="panel-title">Crear Cuenta</div>
+                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Iniciar Sesion</a></div>
+                </div> 
+
+                <div class="panel-body" >
+                    <form id="signupform" class="form-horizontal" role="form">
+                        
+                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <p>Error:</p>
+                            <span></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-3 control-label">Email</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="firstname" class="col-md-3 control-label">Usuario</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Escoja un nombre de Usuario" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-3 control-label">Contraseña</label>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Escriba una Contraseña" type="Password" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Button -->                                        
+                            <div class="col-md-offset-3 col-md-9">
+                                <button id="btn-signup" onclick="signup()" type="button" class="btn btn-info">&nbsp Inscribirse</button>
+                            </div>
+                        </div>
+
+                   </form>
+                   <span id="msg"></span>
+                </div>
+
+            </div>
+           
+         </div>
+    </div>
+  <!--EndGrid-->
+
+
+<!-- Footer -->
+  <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <div class="navbar-text pull-left">
+        <p>&copy 2015 Contratistas</p>
+      </div>
+      <div class="navbar-text pull-right">
+        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+        <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+      </div>
+    </div>
+  </div>
+<!-- EndFooter -->
+
+<!-- Js and BootStrap core -->
+
+  <!-- Modal -->
+    <div class="modal fade" id="contacto" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="" class="form-horizontal" role="form">
+            <div class="modal-header">
+              <h4>Contacto</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="contact-name" class="col-sm-2 control-label">Nombre</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="contact-name" placeholder="Escriba su Nombre">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="contact-email" placeholder="example@domain.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-message" class="col-sm-2 control-label">Mensaje</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-default" data-dismiss="modal">Cerrar</a>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- EndModal -->
+
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="/statics/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script type="text/javascript">
+    
+    /**
+     * Esta funcion se ejecuta al hacer clic en el boton 'Signup'
+     * registra mediante ajax al nuevo usuario
+     */
+    function signup() {
+      $.ajax({
+        type: "POST",
+        url: '/SignUp',
+        data: $('#signupform').serialize(),
+        success: function (data) {
+          $('#msg').empty();
+          if (data.error) {
+            $('#msg').append(data.err.msg);
+          }
+          else {
+            $('#msg').append('User registered successfully');
+            $('#signup-form')[0].reset();
+            window.location = '/';
+          }
+        },
+        dataType: 'json'
+      });
+    }
+
+    var user = {};
+
+    function loggin() {
+      $.ajax({
+        type: "POST",
+        url: '/Login',
+        data: $('#loginform').serialize(),
+        success: function (data) {
+          $('#alerts').empty();
+          if (data.error) {
+            var html = '<div class="alert-box alert round">'
+                       + data.err.msg + '</div>';
+            $('#alerts').append(html);
+          }
+          else {
+            user = data.user;
+            var socket = new io();
+            configureSocket(socket);
+            $('#loginbox').css('display', 'none');
+            $('#btn-login').css('display', 'none');
+            $('#Chat').css('display', 'block');
+          }
+        },
+        dataType: 'json'
+      });
+    }
+
+    function configureSocket(socket) {
+      
+      /**
+       * Cuando el servidor envia la lista de usuarios conectados.
+       * se reciben a través de este evento,
+       * cada usuario se agrega a la lista de usuarios online
+       * @param  {[type]} users Array con usuarios conectados en el momento
+       */
+      socket.on('all online users', function (users) {
+        console.log(users.length + ' users received');
+        for (var i=0; i<users.length; i++) 
+        {
+          var htmluser = '<li id="' + users[i]._id + '">' + users[i]._id + '</li>';
+          $('#online-userslist').append(htmluser);
+        }
+      });
+      
+      /**
+       * Listener para el evento 'chat message'
+       *   Notese que es el mismo evento que se envia 
+       *   desde el servidor.
+       * Agregamos el mensage entrante a la lista.
+       */
+      socket.on('chat message', function (msg) {
+        $('#list-msgs').append( $('<li>').text(msg) );
+      });
+      
+      /**
+       * Listener para evento 'new user', el servidor lo emite
+       * cuando un usuario se ha conectado
+       * @param  {[json]} nuser el usuario recien conectado
+       */
+      socket.on('new user', function (nuser) {
+        var linuser = '<li id="' + nuser._id + '">'+ nuser._id + '</li>';
+        $('#online-userslist').append(linuser);
+      });
+      
+      /**
+       * Cada vez que un usuario se desconecta, debemos eliminarlo
+       * de la lista de usuarios conectados, el servidor envia un mensaje
+       * con este evento para informarnos sobre un usuario desconectado.
+       * @param  {[json]} nuser El usuarios que se acaba de desconectar
+       */
+      socket.on('remove user', function (nuser) {
+        $('#' + nuser._id).remove();
+      })
+      
+      /**
+       * Emitimos un evento de tipo 'chat message' cada vez
+       * que se presiona 'Enter' en el textarea y enviamos
+       * su contenido como mensaje al servidor.
+       */
+      $('#new-msg').keyup(function (evt) {
+        if (evt.keyCode === 13) {
+          socket.emit('chat message', $('#new-msg').val());
+          $('#new-msg').val('');
+        }
+      });
+      
+      /**
+       * Solicitamos al servidor la lista de usuarios conectados
+       * en este momento.
+       */
+      socket.emit('all online users');
+      
+      /**
+       * Emitimos el evento 'new user' para que el servidor
+       * informe a todos los usuarios que estamos en linea.
+       */
+      socket.emit('new user', user);
+
+    }
+
+
+    </script>
+
+</body>
+  
+</html>
